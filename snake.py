@@ -1,5 +1,5 @@
 import curses
-
+from random import randint
 # create window
 curses.initscr()
 win = curses.newwin(20, 60, 0, 0)  # y, x
@@ -67,11 +67,18 @@ while key != ESC:
     if snake[0] == food:
         # eat food
         score += 1
+        food = ()
+        while food == ():
+            food == (randint(1, 18), randint(1, 58))
+            if food in snake:
+                food = ()
+        win.addch()
+    else:
+        # move snake
+        last = snake.pop()
+        win.addch(last[0], last[1], " ")
 
-    for c in snake:
-        win.addch(c[0], c[1], "*")
-
-    win.addch(food[0], food[1], "#")
+    win.addch(snake[0][0], snake[0][1], "*")
 
 
 curses.endwin()
