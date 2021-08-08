@@ -59,6 +59,15 @@ while key != ESC:
     if x == 59:  # 59 because the x coordinates of the screen end at 60
         break
 
+    # If snake runs over itself
+    if snake[0] in snake[1:]:
+        break
+
+    # If snake hits food
+    if snake[0] == food:
+        # eat food
+        score += 1
+
     for c in snake:
         win.addch(c[0], c[1], "*")
 
