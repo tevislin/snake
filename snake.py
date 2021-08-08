@@ -23,7 +23,29 @@ key = curses.KEY_RIGHT
 
 
 while key != ESC:
+    win.addstr(0, 2, 'Score' + str(score) + '')
+    win.timeout(150 - (len(snake))//5 + len(snake)//10 %
+                120)  # incrrease speed of the snake
+
+    prev_key = key
     event = win.getch()
+    key = event if event != -1 else prev_key
+
+    # CHECKING KEYS
+    if key not in [curses.KEY_LEFT, curses.KEY_RIGHT, curses.KEY_UP, curses.KEY_DOWN, ESC]:
+        key = prev_key
+
+    # calculate the next coordinates
+    y = snake[0][0]
+    x = snake[0][1]
+    if key == curses.KEY_DOWN:
+        y += 1
+    if key == curses.KEY_UP:
+        y -= 1
+    if key == curses.KEY_LEFT:
+        x -= 1
+    if key == curses.KEY_RIGHT:
+        x += 1
 
     for c in snake:
         win.addch(c[0], c[1], "*")
