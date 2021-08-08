@@ -23,7 +23,7 @@ key = curses.KEY_RIGHT
 
 
 while key != ESC:
-    win.addstr(0, 2, 'Score' + str(score) + '')
+    win.addstr(0, 2, 'Score:: ' + str(score) + '')
     win.timeout(150 - (len(snake))//5 + len(snake)//10 %
                 120)  # incrrease speed of the snake
 
@@ -47,10 +47,15 @@ while key != ESC:
     if key == curses.KEY_RIGHT:
         x += 1
 
+    snake.insert(0, (y, x))  # append is better but insert just makes it easier
+
+    # check if snake hit border
+
     for c in snake:
         win.addch(c[0], c[1], "*")
 
     win.addch(food[0], food[1], "#")
+
 
 curses.endwin()
 print(f"Final score = {score}")
