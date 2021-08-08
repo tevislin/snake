@@ -69,11 +69,10 @@ while key != ESC:
         score += 1
         food = ()
         while food == ():
-            food == (randint(1, 18), randint(1, 58))
+            food = (randint(1, 18), randint(1, 58))
             if food in snake:
                 food = ()
         win.addch(food[0], food[1], "#")
-
     else:
         # move snake
         last = snake.pop()
