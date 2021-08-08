@@ -50,6 +50,14 @@ while key != ESC:
     snake.insert(0, (y, x))  # append is better but insert just makes it easier
 
     # check if snake hit border
+    if y == 0:
+        break
+    if y == 19:  # 19 because the y coordinates end at 20
+        break
+    if x == 0:
+        break
+    if x == 59:  # 59 because the x coordinates of the screen end at 60
+        break
 
     for c in snake:
         win.addch(c[0], c[1], "*")
