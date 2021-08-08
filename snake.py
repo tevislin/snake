@@ -72,7 +72,8 @@ while key != ESC:
             food == (randint(1, 18), randint(1, 58))
             if food in snake:
                 food = ()
-        win.addch()
+        win.addch(food[0], food[1], "#")
+
     else:
         # move snake
         last = snake.pop()
